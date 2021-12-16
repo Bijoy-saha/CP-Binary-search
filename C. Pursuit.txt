@@ -1,0 +1,103 @@
+#include<iostream>
+#include<string>
+using ll=long long;
+#include <utility>
+using namespace std;
+#include<sstream>
+ll mod=1e9+7;
+#define filein freopen("input.txt","r",stdin)
+#define fileout  freopen("output.txt","w",stdout)
+#include<bits/stdc++.h>
+#define ya  cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define pb push_back
+#define lst bi.back()
+#define fast_cin ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define all(bi) bi.begin(),bi.end()
+#define printv(bi) for(i=0;i<bi.size();i++)cout<<bi[i]<<' ';cout<<endl;
+#define see(x) cout<<x<<endl;
+ll inf=1e10;
+inline ll lcm(ll a,ll b)
+{
+    ll    y=(a*b)/__gcd(a,b);
+    return y;
+}
+//iterateinaset for(auto it:s){cout<<it<<endl;}
+//for searching a key:
+//[auto it=mp.find(x);if(it!=mp.end())]
+//for(auto it:mp)cout<<it.first<<" "<<it.second<<endl;
+//*____________________________*
+//bool cmp(pair<ll, ll>& a,
+//         pair<ll, ll>& b)
+//{
+//    return a.second > b.second;
+//}
+//*______________________________*
+/*ll myXOR(ll x, ll y)
+{
+   return (x | y) & (~x | ~y);
+}*/
+
+int main()
+{
+    fast_cin;
+    ll x,n,i,k,y,j=0,t,sum=0,a=0,x1,x2,b;
+    cin>>t;
+    vector<ll>vc,bi,ar1,ar2;
+    while(t--)
+    {
+        cin>>n;
+        for(i=0; i<n; i++)
+        {
+            cin>>x;
+            bi.pb(x);
+        }
+        for(i=0; i<n; i++)
+        {
+            cin>>x;
+            vc.pb(x);
+        }
+        sort(all(bi),greater<int>());
+        sort(all(vc),greater<int>());
+        for(i=1; i<n; i++)
+        {
+            bi[i]+=bi[i-1];
+            vc[i]+=vc[i-1];
+        }
+        ll low=0;
+        ll high=inf;
+        ll ans=0;
+        while(low<=high)
+        {
+            ll mid=(low+high)/2;
+            k=(mid+n)-(mid+n)/4;
+            if(k>mid)
+            {
+                ll val=bi[k-mid-1]+mid*100;
+               if(k>n)
+               {
+                   j=vc[n-1];
+               }else
+               {
+                   j=vc[k-1];
+               }
+              if(val>=j)
+              {
+                 ans=mid;
+                 high=mid-1;
+              }else
+              {
+                 low=mid+1;
+              }
+            }else
+            {
+                high=mid-1;
+                ans=mid;
+            }
+        }
+        cout<<ans<<endl;
+bi.clear();
+vc.clear();
+    }
+}
+ 
