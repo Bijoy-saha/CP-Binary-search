@@ -1,0 +1,61 @@
+#include<iostream>
+#include<string>
+using ll=long long;
+#include <utility>
+using namespace std;
+#include<sstream>
+ll mod=1e9+7;
+#include<bits/stdc++.h>
+#define ya  cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define pb push_back
+#define lst bi.back()
+#define fast_cin ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define all(bi) bi.begin(),bi.end()
+#define printv(bi) for(i=0;i<bi.size();i++)cout<<bi[i]<<" ";
+ll inf=1e10;
+//for searching a key:
+/*[auto it=mp.find(x);
+if(it!=mp.end())]
+for(auto it:mp)
+{
+cout<<it.first<<" "<<it.second<<endl;
+}*/
+
+
+/*bool cmp(pair<ll, ll>& a,
+         pair<ll, ll>& b)
+{
+    return a.second > b.second;
+}*/
+//sauo nijar diya  kissu hbena
+int main()
+{
+    fast_cin;
+    ll a,n,i,j=1,x,y,t;
+    cin>>n;
+    vector<ll>bi(n+2),b(n+2),c;
+    for(i=1; i<=n; i++)
+    {
+        cin>>x;
+        bi[i]=x;
+    }
+    multiset<ll>mst;
+    for(i=1; i<=n; i++)
+    {
+        cin>>x;
+        mst.insert(x);
+    }
+    for(i=1; i<=n; i++)
+    {
+        x=n-bi[i];
+    auto it=mst.lower_bound(x);
+       if(it==mst.end())it=mst.begin();
+       ll ans=(bi[i]+*it)%n;
+       c.pb(ans);
+       mst.erase(it);
+    }
+    printv(c);
+
+}
+ 
