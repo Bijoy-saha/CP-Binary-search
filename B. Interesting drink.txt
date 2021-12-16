@@ -1,0 +1,55 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main()
+{
+    int n,i,j,mid,low=0,up,m,sum=0;
+    cin>>n;
+    int a[n];
+long long int q;
+    for(i=0; i<n; i++)
+    {
+        cin>>a[i];
+    }
+    sort(a,a+n);
+    cin>>q;
+    for(j=0; j<q; j++)
+    {
+        cin>>m;
+        low=0;
+        up=n-1;
+        mid=(up+low)/2;
+        for(i=0; i<n; i++)
+        {
+
+            if(m<a[mid])
+            {
+                up=mid;
+                mid=(up+low)/2;
+                if(mid==0&&m<a[mid])
+                {
+                    cout<<0<<endl;
+                    break;
+                }
+
+            }
+            else if(m>=a[mid])
+            {
+                if(m>=a[mid]&&m<a[mid+1])
+                {
+                    cout<<mid+1<<endl;
+                    break;
+                }
+                low=mid+1;
+                mid=(low+up)/2;
+                if(mid==n-1)
+                {
+                    cout<<mid+1<<endl;
+                    break;
+                }
+
+            }
+
+        }
+    }
+}
