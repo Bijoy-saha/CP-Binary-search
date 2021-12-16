@@ -1,0 +1,49 @@
+#include<iostream>
+#include<string>
+using ll=long long;
+using namespace std;
+#include<sstream>
+ll mod=1e9+7;
+#include<bits/stdc++.h>
+#define ya  cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define pb push_back
+#define fast_cin ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define all(bi) bi.begin(),bi.end()
+/*bool cmp(pair<ll, ll>& a,
+         pair<ll, ll>& b)
+{
+    return a.second > b.second;
+}*/
+/*vector<ll>msub(vector<ll> &bi,ll p)
+{
+    auto srt=bi.begin();
+    auto ed=bi.begin()+(p+1);
+    vector<ll>arr(p+1);
+    copy(srt,ed,arr.begin());
+    return arr;
+}*/
+int main()
+{
+    fast_cin;
+    ll t,i,j,sum=0,p,n,cst,y,x,m,cnt,f;
+    string s,s1;
+    vector<ll>bi,b,a;
+    vector<pair<ll,ll>>vp;
+    cin>>n;
+    for(i=0;i<n;i++)
+    {
+        cin>>x;
+        bi.pb(abs(x));
+    }
+    sort(all(bi));
+    for(i=0;i<n-1;i++)
+    {
+        y=bi[i]*2;
+        auto it=upper_bound(all(bi),y);
+        j=it-bi.begin();
+        sum+=(j-(i+1));
+        //cout<<j<<" "<<i<<endl;
+    }
+    cout<<sum<<endl;
+}
