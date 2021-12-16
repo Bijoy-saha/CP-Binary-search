@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#define mx 1e9
+#include<vector>
+#define ll long long
+using namespace std;
+#include<bits/stdc++.h>
+#include<cmath>
+#include<limits.h>
+ll ch(ll w)
+{
+    ll sum=0;
+    while(w>0)
+    {
+       sum+=(w%10);
+       w=w/10;
+    }
+    return sum;
+}
+int main()
+{
+    ll n,i,j;
+    cin>>n;
+    ll mid;
+    ll ans=LONG_MAX;
+    for(ll k=1; k<=90; k++)
+    {
+       ll l=0,h=LONG_MAX;
+        while(l<=h)
+        {
+            mid=(l+h)/2;
+            j=(mid*mid)+(mid*k);
+//            if(j==n)
+//            {
+//                cout<<1<<endl;
+//                return 0;
+//            }
+            if(j==n&&ch(mid)==k)
+            {
+               ans=min(ans,mid);
+               break;
+            }
+            if(j<n)
+            {
+                l=mid+1;
+            }else
+            {
+                h=mid-1;
+            }
+        }
+    }
+    if(ans==LONG_MAX)cout<<-1<<endl;
+    else cout<<ans<<endl;
+
+}
