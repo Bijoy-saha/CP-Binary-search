@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+#include<vector>
+int main()
+{
+     int i,j,n,m,x=0,y,p,val;
+    vector<int>a;
+    cin>>n;
+    a.push_back(0);
+    for(i=1; i<=n; i++)
+    {
+        cin>>y;
+        a.push_back(x+y);
+        x=x+y;
+    }
+    cin>>m;
+    for(i=0; i<m; i++)
+    {
+        cin>>p;
+         std::vector<int>::iterator val=lower_bound(a.begin(),a.end(),p);
+        cout<<val-a.begin()<<endl;
+    }
+}
